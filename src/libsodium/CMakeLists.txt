@@ -154,3 +154,8 @@ add_library(libsodium
 	include/sodium/runtime.h 
 	include/sodium/utils.h
 )
+
+include_directories(
+	include
+	include/sodium
+)
