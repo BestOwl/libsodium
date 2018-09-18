@@ -1,5 +1,5 @@
 
-SET(LIBSODIUM_SOURCE
+set(LIBSODIUM_SOURCE
 	crypto_generichash/crypto_generichash.c
     crypto_generichash/blake2b/generichash_blake2.c
     crypto_generichash/blake2b/ref/blake2b-compress-ref.c
@@ -107,7 +107,7 @@ SET(LIBSODIUM_SOURCE
     crypto_core/ed25519/ref10/ed25519_ref10.c
 )
 
-SET(LIBSODIUM_HEADERS
+set(LIBSODIUM_HEADERS
 	crypto_generichash/blake2b/ref/blake2b-load-sse2.h
     crypto_generichash/blake2b/ref/blake2b-load-avx2.h
     crypto_generichash/blake2b/ref/blake2.h
@@ -237,6 +237,14 @@ SET(LIBSODIUM_HEADERS
     crypto_core/ed25519/ref10/fe_51/base2.h
     crypto_core/ed25519/ref10/fe_51/base.h
 )
+
+# generate version.h
+set(SODIUM_VERSION_STRING "1.0.16")
+set(SODIUM_LIBRARY_VERSION_MAJOR 10)
+set(SODIUM_LIBRARY_VERSION_MINOR 1)
+configure_file("include/sodium/version.h.in" "include/sodium/version.h")
+# include generated version.h
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/include/sodium)
 
 add_library(libsodium SHARED ${LIBSODIUM_SOURCE} ${LIBSODIUM_HEADERS})
 
