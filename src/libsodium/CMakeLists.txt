@@ -242,9 +242,7 @@ set(LIBSODIUM_HEADERS
 set(SODIUM_VERSION_STRING "1.0.16")
 set(SODIUM_LIBRARY_VERSION_MAJOR 10)
 set(SODIUM_LIBRARY_VERSION_MINOR 1)
-configure_file("include/sodium/version.h.in" "include/sodium/version.h")
-# include generated version.h
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/include/sodium)
+configure_file("include/sodium/version.h.in" ${CMAKE_CURRENT_SOURCE_DIR}/include/sodium/version.h)
 
 add_library(libsodium SHARED ${LIBSODIUM_SOURCE} ${LIBSODIUM_HEADERS})
 
